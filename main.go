@@ -32,16 +32,17 @@ func NewRecipeHandler(c *gin.Context) {
 	c.JSON(http.StatusOK, recipe)
 }
 
+
 func ListRecipesHandler(c *gin.Context) {
 	c.JSON(http.StatusOK, recipes)
 }
 
 var recipes []Recipe
-
 func init() {
 	recipes = make([]Recipe, 0)
 	file, _ := os.ReadFile("recipes.json")
 	_ = json.Unmarshal([]byte(file), &recipes)
+
 }
 
 func main() {
